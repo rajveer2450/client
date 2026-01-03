@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import InputTodo from './components/Inputtodo';
+import ListTodo from './components/ListTodo';
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <>
     <div>
       <InputTodo/>
+      <ListTodo/>
     </div>
     
     </>

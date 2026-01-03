@@ -21,14 +21,14 @@ const InputTodo = ()=>{
         }
     };
     return(
-        <div>
+        <>
             <h1 className="text-center mt-5">hello</h1>
             <form className="d-flex m-5" onSubmit={onSubmitform}>
                 <input type="text" className="form-control" value={description} onChange={e=> setDescription(e.target.value)}/>
                 <button className="btn btn-success">add</button>
             </form>
 
-        </div>
+        </>
         
     )
 }
