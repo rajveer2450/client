@@ -1,31 +1,55 @@
-import React from "react";
+import React, {useEffect, useState}from "react";
 const ListTodo = ()=>{
+
+    const [Todos,setTodos]= useState([])
+    const gettodos= async ()=>{
+        
+        const data = await fetch("http://localhost:5000/todos")
+        const mainData = await data.json()
+
+        setTodos(mainData);
+
+
+
+
+    }
+
+    useEffect(()=>{
+        gettodos();
+        
+        
+
+    },[])
+    // console.log(Todos)
+
+
+
     return(
         <>
-        <table class="table">
+        <table className="table m-5" >
             <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th>description</th>
+                <th>edit</th>
+                <th>delete</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
+            {Todos.map(todo => {
+                return(
+                    <tr key={todo.todo_id}>
+                        <td>{todo.description}</td>
+                        <td>edit</td>
+                        <td><button className="btn btn-danger">delete</button></td>
+                    </tr>
+                )
+            })}
+            {/* <tr>
                 <td>John</td>
                 <td>Doe</td>
                 <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-            </tr>
+            </tr> */}
+            
             </tbody>
         </table>
         
