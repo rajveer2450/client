@@ -5,7 +5,8 @@ const ListTodo = ()=>{
     const gettodos= async ()=>{
         try{
             const token = localStorage.getItem('token');
-            const data = await fetch("http://localhost:5000/todos", {headers: { 'Authorization': `Bearer ${token}` }});
+            const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+            const data = await fetch(API_URL + "/todos", {headers: { 'Authorization': `Bearer ${token}` }});
             if (data.status === 401 || data.status === 403) {
                 localStorage.removeItem('token');
                 window.location = '/';
@@ -38,7 +39,8 @@ const ListTodo = ()=>{
     const deleteTodo = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/todos/${id}`, {
+            const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+            const res = await fetch(`${API_URL}/todos/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

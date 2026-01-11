@@ -8,8 +8,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const endpoint = isRegister ? '/register' : '/login';
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
     try {
-      const res = await fetch('http://localhost:5000' + endpoint, {
+      const res = await fetch(API_URL + endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
