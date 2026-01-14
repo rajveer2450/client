@@ -40,7 +40,7 @@ const ListTodo = ()=>{
         try {
             const token = localStorage.getItem('token');
             const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-            const res = await fetch(`${API_URL}/todos/${id}`, {
+            await fetch(`${API_URL}/todos/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
